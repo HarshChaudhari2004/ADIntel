@@ -10,8 +10,7 @@ const Home=()=>{
             <br/>
             <br/>
 
-            <h1>Hi, I'm Ashish Khobragade</h1>
-            <h3>Software developer | UI/UX Designer | Data Scientist</h3>
+           
 
            
         </div>
