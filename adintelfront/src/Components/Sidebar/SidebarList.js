@@ -13,51 +13,98 @@ import { SiGoogleanalytics } from "react-icons/si";
 import { FaRegLightbulb } from "react-icons/fa6";
 import { MdModeComment } from "react-icons/md";
 
-const SidebarList = ({ expandSidebar, setActiveComponent, activeComponent }) => {
-    return (
-        <React.Fragment>
-            {expandSidebar ? (
-                <div className="navbar-items">
-                    <div className="sidebar-logo">
-                        {/* Replace the profile picture with the dark logo */}
-                        <img src={darkLogo} alt="logo" />
-                    </div>
-                    <hr />
-                    <ul>
-                        <li 
-                            className={`nav-item ${activeComponent === "home" ? "active" : ""}`}
-                            onClick={() => setActiveComponent("home")}
-                        >
-                            <FaHome size={30} />Home
-                        </li>
-                        <li className="nav-item"><CgInsights size={30} />Insights</li>
-                        <li 
-                            className={`nav-item ${activeComponent === "analytics" ? "active" : ""}`}
-                            onClick={() => setActiveComponent("analytics")}
-                        >
-                            <SiGoogleanalytics size={30} />Analytics
-                        </li>
-                        <li className="nav-item"><FaRegLightbulb size={30} />AI Suggestions</li>
-                        <li className="nav-item"><FaArrowTrendUp size={30} />Trends</li>
-                        <li className="nav-item"><MdModeComment size={30} />AI chatbot</li>
-                    </ul>
-                </div>
-            ) : (
-                <div className="navbar-items-only-icons">
-                    <ul>
-                        <li className="nav-item"><FaHome size={30} /></li>
-                        <li className="nav-item"><IoPersonSharp size={30} /></li>
-                        <li className="nav-item"><FaArrowTrendUp size={30} /></li>
-                        <li className="nav-item"><GrProjects size={30} /></li>
-                        <li className="nav-item"><SiHyperskill size={30} /></li>
-                        <li className="nav-item"><FaUniversity size={30} /></li>
-                        <li className="nav-item"><MdEmail size={30} /></li>
-                        <li className="nav-item"><TiDocumentText size={30} /></li>
-                    </ul>
-                </div>
-            )}
-        </React.Fragment>
-    );
+const SidebarList = ({ expandSidebar = true, setActiveComponent, activeComponent }) => {
+  return (
+    <>
+      {expandSidebar ? (
+        <div className="navbar-items">
+          <div className="sidebar-logo">
+            <img src={darkLogo} alt="logo" />
+          </div>
+          <hr />
+          <ul>
+            <li
+              className={`nav-item ${activeComponent === "home" ? "active" : ""}`}
+              onClick={() => setActiveComponent("home")}
+            >
+              <FaHome size={30} />
+              Home
+            </li>
+            <li
+              className={`nav-item ${activeComponent === "competition" ? "active" : ""}`}
+              onClick={() => setActiveComponent("competition")}
+            >
+              <CgInsights size={30} />
+              Competition
+            </li>
+            <li
+              className={`nav-item ${activeComponent === "analytics" ? "active" : ""}`}
+              onClick={() => setActiveComponent("analytics")}
+            >
+              <SiGoogleanalytics size={30} />
+              Analytics
+            </li>
+            <li
+              className={`nav-item ${activeComponent === "ai-suggestions" ? "active" : ""}`}
+              onClick={() => setActiveComponent("ai-suggestions")}
+            >
+              <FaRegLightbulb size={30} />
+              AI Suggestions
+            </li>
+            <li
+              className={`nav-item ${activeComponent === "trends" ? "active" : ""}`}
+              onClick={() => setActiveComponent("trends")}
+            >
+              <FaArrowTrendUp size={30} />
+              Trends
+            </li>
+            <li
+              className={`nav-item ${activeComponent === "ai-chatbot" ? "active" : ""}`}
+              onClick={() => setActiveComponent("ai-chatbot")}
+            >
+              <MdModeComment size={30} />
+              AI Chatbot
+            </li>
+          </ul>
+        </div>
+      ) : (
+        <div className="navbar-items-only-icons">
+          <ul>
+            <li className="nav-item">
+              <FaHome size={30} />
+            </li>
+            <li className="nav-item">
+              <CgInsights size={30} />
+            </li>
+            <li className="nav-item">
+              <SiGoogleanalytics size={30} />
+            </li>
+            <li className="nav-item">
+              <FaRegLightbulb size={30} />
+            </li>
+            <li className="nav-item">
+              <FaArrowTrendUp size={30} />
+            </li>
+            <li className="nav-item">
+              <GrProjects size={30} />
+            </li>
+            <li className="nav-item">
+              <SiHyperskill size={30} />
+            </li>
+            <li className="nav-item">
+              <FaUniversity size={30} />
+            </li>
+            <li className="nav-item">
+              <MdEmail size={30} />
+            </li>
+            <li className="nav-item">
+              <TiDocumentText size={30} />
+            </li>
+          </ul>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default SidebarList;
