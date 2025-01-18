@@ -1,2 +1,6 @@
-   npx create-react-app analytics-dashboard
-   cd analytics-dashboard
+{
+"dependencies": {
+   "c3": "^0.7.20",
+   "d3": "^7.0.0"
+ }
+}
