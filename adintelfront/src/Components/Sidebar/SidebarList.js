@@ -13,7 +13,7 @@ import { SiGoogleanalytics } from "react-icons/si";
 import { FaRegLightbulb } from "react-icons/fa6";
 import { MdModeComment } from "react-icons/md";
 
-const SidebarList = ({ expandSidebar }) => {
+const SidebarList = ({ expandSidebar, setActiveComponent, activeComponent }) => {
     return (
         <React.Fragment>
             {expandSidebar ? (
@@ -24,9 +24,19 @@ const SidebarList = ({ expandSidebar }) => {
                     </div>
                     <hr />
                     <ul>
-                        <li className="nav-item"><FaHome size={30} />Home</li>
+                        <li 
+                            className={`nav-item ${activeComponent === "home" ? "active" : ""}`}
+                            onClick={() => setActiveComponent("home")}
+                        >
+                            <FaHome size={30} />Home
+                        </li>
                         <li className="nav-item"><CgInsights size={30} />Insights</li>
-                        <li className="nav-item"><SiGoogleanalytics size={30} />Analytics</li>
+                        <li 
+                            className={`nav-item ${activeComponent === "analytics" ? "active" : ""}`}
+                            onClick={() => setActiveComponent("analytics")}
+                        >
+                            <SiGoogleanalytics size={30} />Analytics
+                        </li>
                         <li className="nav-item"><FaRegLightbulb size={30} />AI Suggestions</li>
                         <li className="nav-item"><FaArrowTrendUp size={30} />Trends</li>
                         <li className="nav-item"><MdModeComment size={30} />AI chatbot</li>

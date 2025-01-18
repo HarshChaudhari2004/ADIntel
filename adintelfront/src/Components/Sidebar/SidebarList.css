@@ -52,3 +52,13 @@
     transform: scale(1.5);
     fill: rgb(0, 102, 204);
 }
+
+.nav-item.active {
+    color: rgb(0, 102, 204);
+    transform: translateY(-5px);
+}
+
+.nav-item.active svg {
+    transform: scale(1.5);
+    fill: rgb(0, 102, 204);
+}
