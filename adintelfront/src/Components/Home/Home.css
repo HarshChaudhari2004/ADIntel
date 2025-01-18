@@ -1,0 +1,17 @@
+.data h1{
+
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    margin: 10%;
+    background-color: rgb(195, 255, 0);
+
+
+}
+
+.data h3{
+    margin-left: 10%;
+    margin-bottom: 10%;
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(255, 183, 0);
+}
