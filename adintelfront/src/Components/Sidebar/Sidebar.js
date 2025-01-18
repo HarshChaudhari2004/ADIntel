@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import Home from "../Home/Home";
-import Analytics from "../Analytics/Analytics";  // Fixed import path
+import Analytics from "../Analytics/Analytics";
+import Competition from "../Competition/Competition";
+  // Fixed import path
 import SidebarList from "./SidebarList";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 
@@ -15,14 +17,16 @@ const Sidebar = () => {
 
     // Add this function to handle component switching
     const renderComponent = () => {
-        switch(activeComponent) {
+        switch (activeComponent) {
             case "analytics":
                 return <Analytics />;
+            case "competition":
+                return <Competition />;
             default:
                 return <Home />;
         }
     };
-
+    
     return (
         <div className="container-fluid sidebar-section">
             <div className={expandSidebar ? "sidebar-expand sidebar" : "sidebar"}>

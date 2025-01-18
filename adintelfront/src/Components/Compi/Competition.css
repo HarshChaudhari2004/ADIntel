@@ -1,0 +1,218 @@
+/* Competition.css */
+
+/* General Section Styling */
+.competition-section {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(34, 193, 195, 0.3), rgba(253, 187, 45, 0.3)); /* Gradient background */
+  color: white; /* White text */
+}
+
+/* Container Styling */
+.competition-container,
+.analyzer-container,
+.sentiment-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3); /* Transparent white */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  color: white; /* White text */
+}
+
+/* Title Styling */
+.competition-title,
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(195, 255, 0, 0.3); /* Transparent background */
+  margin: 10% auto;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Description Text */
+.competition-description {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white; /* White text */
+  background-color: rgba(255, 183, 0, 0.3); /* Transparent background */
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Input Field */
+.competition-input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.competition-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.competition-input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Subtle placeholder */
+}
+
+.competition-input:focus {
+  border: 2px solid #ffb700;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 5px rgba(255, 183, 0, 0.5);
+}
+
+/* Button Styling */
+.competition-button {
+  background-color: rgba(34, 193, 195, 0.8); /* Gradient-like button */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.competition-button:disabled {
+  background-color: rgba(34, 193, 195, 0.3);
+  cursor: not-allowed;
+}
+
+.competition-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+  background-color: rgba(34, 193, 195, 1);
+}
+
+/* Loading Spinner */
+.competition-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Video Information */
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px dashed white;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
+
+.thumbnail-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.video-summary {
+  font-size: 1rem;
+  color: white;
+}
+
+/* Quick Analysis */
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.loading-state {
+  display: none;
+  text-align: center;
+}
+
+/* Sentiment Analysis Graph */
+.graph-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 200px;
+  margin-top: 2rem;
+}
+
+.graph-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0.5rem;
+}
+
+.graph-bar-fill {
+  width: 40px;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: height 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.graph-bar-fill .bar-label {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.graph-bar-fill.positive {
+  background-color: rgba(40, 167, 69, 0.8);
+}
+
+.graph-bar-fill.neutral {
+  background-color: rgba(255, 193, 7, 0.8);
+}
+
+.graph-bar-fill.negative {
+  background-color: rgba(220, 53, 69, 0.8);
+}
+
+.bar-title {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: white;
+}

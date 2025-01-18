@@ -1,6 +1,62 @@
 .sidebar-section {
-    background-color:  rgb(33, 33, 33);
+    background: conic-gradient(
+        from 0deg,
+        rgb(134, 51, 170), /* lighter version of rgb(89, 16, 117) */
+        rgb(120, 64, 141), /* lighter version of rgb(70, 20, 80) */
+        rgb(100, 52, 155), /* lighter version of rgb(60, 0, 90) */
+        rgb(91, 68, 147), /* lighter version of rgb(44, 13, 73) */
+        rgb(85, 51, 126), /* lighter version of rgb(30, 5, 50) */
+        rgb(134, 51, 170)  /* lighter version of rgb(89, 16, 117) */
+    );
     display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Define the styles for the abstract circles */
+.abstract-circles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1; /* To keep it behind the content */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2); /* Transparent white circles */
+    animation: resizeCircle 5s infinite ease-in-out;
+}
+
+/* Circle 1 */
+.circle.one {
+    width: 300px;
+    height: 300px;
+    animation-duration: 6s;
+    animation-delay: 0s;
+}
+
+/* Circle 2 */
+.circle.two {
+    width: 200px;
+    height: 200px;
+    animation-duration: 8s;
+    animation-delay: 2s;
+}
+
+/* Animation for resizing circles */
+@keyframes resizeCircle {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 .sidebar {
