@@ -9,11 +9,53 @@ from django.http import JsonResponse
 from django.core.files.storage import default_storage
 import google.generativeai as genai
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 # Set up Google Gemini API
 API_KEY = "AIzaSyASev_q7HSEJGfTbZXtBWOw7Clhlps_yxQ"
 # Use the API key with the GenAI configuration
 genai.configure(api_key=API_KEY)
+
+# Gemini model configuration
+generation_config = {
+    "temperature": 1,
+    "top_p": 0.95,
+    "top_k": 40,
+    "max_output_tokens": 8192,
+    "response_mime_type": "text/plain",
+}
+
+model = genai.GenerativeModel(
+    model_name="gemini-1.5-pro",
+    generation_config=generation_config,
+    tools=[
+        genai.protos.Tool(
+            google_search_retrieval=genai.protos.GoogleSearchRetrieval(
+                dynamic_retrieval_config=genai.protos.DynamicRetrievalConfig(
+                    mode=genai.protos.DynamicRetrievalConfig.Mode.MODE_DYNAMIC,
+                    dynamic_threshold=0.3,
+                ),
+            ),
+        ),
+    ],
+)
+
+# Initialize chat session with context
+def initialize_chat_session():
+    return model.start_chat(
+        history=[
+            {
+                "role": "user",
+                "parts": [
+                    """Context: The objective of ART Finder is to streamline the research phase of ad creation by automating data gathering and analysis. This tool will:
+                    Identify user pain points and triggers from multiple data sources such as Google, YouTube, Reddit, Quora, and app reviews.
+                    Analyze competitor ads and strategies to uncover high-performing hooks, CTAs, and content formats.
+                    Generate actionable insights and suggestions to help marketers craft effective, user-centric ads."""
+                ],
+            },
+        ]
+    )
 
 # Function to download image from URL
 def download_image_from_url(url, save_path):
@@ -123,3 +165,37 @@ def upload_image(request):
 
 def image_form(request):
     return render(request, 'scraper/image_form.html')
+
+@csrf_exempt
+def analyze_ads(request):
+    if request.method == 'POST':
+        try:
+            # Parse the JSON data from request body
+            data = json.loads(request.body)
+            query = data.get('query', '')
+
+            # Initialize chat session
+            chat_session = initialize_chat_session()
+
+            # Get response from Gemini
+            response = chat_session.send_message(query)
+
+            # Return the response as JSON
+            return JsonResponse({
+                'status': 'success',
+                'response': response.text
+            })
+
+        except Exception as e:
+            return JsonResponse({
+                'status': 'error',
+                'message': str(e)
+            }, status=500)
+
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Method not allowed'
+    }, status=405)
+
+def home(request):
+    return render(request, 'index.html')
