@@ -3,37 +3,42 @@ import "./Sidebar.css";
 import Home from "../Home/Home";
 import Analytics from "../Analytics/Analytics";
 import Competition from "../Competition/Competition";
-  // Fixed import path
+import TrendsPage from "../Trends/TrendsPage";
+import Chatbot from "../../AISuggestion/AISuggestion";
 import SidebarList from "./SidebarList";
 import { FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 
 const Sidebar = () => {
     const [expandSidebar, setExpandSidebar] = useState(true);
-    const [activeComponent, setActiveComponent] = useState("home"); // Add this state
+    const [activeComponent, setActiveComponent] = useState("home");
 
     const handleExpandClick = () => {
         setExpandSidebar(!expandSidebar);
     };
 
-    // Add this function to handle component switching
     const renderComponent = () => {
         switch (activeComponent) {
             case "analytics":
                 return <Analytics />;
             case "competition":
                 return <Competition />;
+            case "trends":
+                return <TrendsPage />;
+            case "ai-suggestion":
+                return <Chatbot />;
             default:
                 return <Home />;
         }
     };
-    
+
     return (
         <div className="container-fluid sidebar-section">
+            {/* Sidebar Section */}
             <div className={expandSidebar ? "sidebar-expand sidebar" : "sidebar"}>
-                <SidebarList 
-                    expandSidebar={expandSidebar} 
-                    setActiveComponent={setActiveComponent} // Pass this prop
-                    activeComponent={activeComponent} // Pass this prop
+                <SidebarList
+                    expandSidebar={expandSidebar}
+                    setActiveComponent={setActiveComponent} // Pass the active component setter
+                    activeComponent={activeComponent} // Pass the current active component
                 />
                 <div className="icon-for-sidebar-expand-and-collapse">
                     <p onClick={handleExpandClick}>
@@ -46,6 +51,7 @@ const Sidebar = () => {
                 </div>
             </div>
 
+            {/* Main Content Section */}
             <div
                 className="container"
                 style={{ marginLeft: expandSidebar ? "230px" : "95px" }}

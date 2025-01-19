@@ -45,8 +45,8 @@ const SidebarList = ({ expandSidebar = true, setActiveComponent, activeComponent
               Analytics
             </li>
             <li
-              className={`nav-item ${activeComponent === "ai-suggestions" ? "active" : ""}`}
-              onClick={() => setActiveComponent("ai-suggestions")}
+              className={`nav-item ${activeComponent === "ai-suggestion" ? "active" : ""}`}
+              onClick={() => setActiveComponent("ai-suggestion")}
             >
               <FaRegLightbulb size={30} />
               AI Suggestions
@@ -57,13 +57,6 @@ const SidebarList = ({ expandSidebar = true, setActiveComponent, activeComponent
             >
               <FaArrowTrendUp size={30} />
               Trends
-            </li>
-            <li
-              className={`nav-item ${activeComponent === "ai-chatbot" ? "active" : ""}`}
-              onClick={() => setActiveComponent("ai-chatbot")}
-            >
-              <MdModeComment size={30} />
-              AI Chatbot
             </li>
           </ul>
         </div>

@@ -1,72 +1,177 @@
+/* Analytics Section */
+body{
+  background-color: black;
+}
+
+
 .analytics-section {
-    padding: 20px;
-    background-color: #f4f4f9;
-  }
-  
+  padding: 2rem; /* Match padding in home.css */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: none; /* Removed shadow to match home.css */
+  background: none; /* Remove background */
+  margin-top: 2rem; /* Added margin to give space from the top */
+}
+
+/* Header Styling */
+.header h2 {
+  font-size: 32px;
+  color: #fff; /* White text to stand out */
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.header p {
+  font-size: 18px;
+  color: #ddd;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Quick Stats Grid */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem; /* Adjusted gap to match home.css */
+  margin-bottom: 40px;
+  width: 100%; /* Ensures grid spans the width */
+}
+
+/* Card Styling */
+.card {
+  background: none; /* Removed white background */
+  backdrop-filter: blur(10px); /* Glass effect */
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: rgb(55, 0, 81);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card p {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.card h4 {
+  font-size: 22px;
+  color: #fff;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.card .increase {
+  color: #28a745;
+  font-size: 14px;
+}
+
+.card .decrease {
+  color: #dc3545;
+  font-size: 14px;
+}
+
+/* Charts Grid */
+.charts, .detailed-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 30px;
+  width: 100%; /* Ensures grid spans the width */
+}
+
+/* Chart Styling */
+.chart {
+  background: black; /* Removed white background */
+  padding: 2rem; /* Match home.css padding */
+  border-radius: 10px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2); /* More consistent shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart h3 {
+  font-size: 20px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Specific Graph Chart Styling for Transparency */
+#retentionChart, #engagementDistChart, #deviceChart, #geoChart, #timeChart {
+  background: transparent !important;
+}
+
+.chart .c3-chart-arcs, .chart .c3-chart-bar, .chart .c3-chart-line {
+  background: transparent !important;
+}
+
+/* Graph Bar Styling */
+.graph-bar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0.5rem;
+}
+
+.graph-bar-fill {
+  width: 40px;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: height 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.graph-bar-fill .bar-label {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.graph-bar-fill.positive {
+  background-color: rgba(40, 167, 69, 0.8);
+}
+
+.graph-bar-fill.neutral {
+  background-color: rgba(255, 193, 7, 0.8);
+}
+
+.graph-bar-fill.negative {
+  background-color: rgba(220, 53, 69, 0.8);
+}
+
+.bar-title {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Additional Responsive Tweaks */
+@media (max-width: 768px) {
   .header h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 8px;
+    font-size: 26px;
   }
-  
-  .header p {
-    font-size: 16px;
-    color: #666;
-  }
-  
+
   .quick-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr 1fr; /* Two columns for smaller screens */
   }
-  
-  .card {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
-    text-align: center;
-  }
-  
-  .card p {
-    font-size: 14px;
-    color: #888;
-  }
-  
-  .card h4 {
-    font-size: 20px;
-    color: #626161;
-    margin: 8px 0;
-  }
-  
-  .card .increase {
-    color: green;
-    font-size: 12px;
-  }
-  
-  .card .decrease {
-    color: red;
-    font-size: 12px;
-  }
-  
+
   .charts, .detailed-charts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 20px;
+    grid-template-columns: 1fr; /* Single column for charts on small screens */
   }
-  
-  .chart {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 16px;
-    border-radius: 8px;
-  }
-  
-  .chart h3 {
-    font-size: 18px;
-    color: #7c7979;
-    margin-bottom: 16px;
-  }
-  
+}

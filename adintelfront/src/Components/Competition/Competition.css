@@ -1,90 +1,68 @@
-/* Competition.css */
-
 /* General Section Styling */
 .competition-section {
-  font-family: 'Courier New', Courier, monospace;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(34, 193, 195, 0.3), rgba(253, 187, 45, 0.3)); /* Gradient background */
-  color: white; /* White text */
+  color: #e0e0e0; /* Light text for dark theme */
+  padding: 120px;
+  align-self: center;
+  transform: translateY(-5px);
+  /* background-color: #121212; Dark background */
 }
+
 
 /* Container Styling */
 .competition-container,
 .analyzer-container,
 .sentiment-container {
-  max-width: 800px;
+  max-width: 50vw; /* Set the maximum width to 50% of the viewport */
+  height: 50vh; /* Set the height to 50% of the viewport height */
   margin: 0 auto;
-  padding: 2rem;
-  background: rgba(255, 255, 255, 0.3); /* Transparent white */
+  padding-top: 50px; /* Added padding on top */
+  padding: 30px; /* Padding for other sides */
+  align-self: center;
+  
+  background: rgba(255, 255, 255, 0.1); /* Slightly transparent white for contrast */
   backdrop-filter: blur(10px); /* Add blur effect */
   border-radius: 10px;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-  color: white; /* White text */
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5); /* Adjusted shadow for dark theme */
+  color: #f5f5f5; /* Lighter text for dark theme */
+  margin-bottom: 2rem; /* Add spacing between containers */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for visibility */
 }
+
 
 /* Title Styling */
 .competition-title,
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  background-color: rgba(195, 255, 0, 0.3); /* Transparent background */
-  margin: 10% auto;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   color: white;
-  border-radius: 5px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
 }
 
 /* Description Text */
 .competition-description {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
   text-align: center;
   color: white; /* White text */
-  background-color: rgba(255, 183, 0, 0.3); /* Transparent background */
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-/* Input Field */
-.competition-input-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
-.competition-input {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.75rem;
-  border: none;
+  background-color: rgba(114, 36, 159, 0.984); /* Transparent background */
+  padding: 1rem;
   border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.competition-input::placeholder {
-  color: rgba(255, 255, 255, 0.7); /* Subtle placeholder */
-}
-
-.competition-input:focus {
-  border: 2px solid #ffb700;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 5px rgba(255, 183, 0, 0.5);
 }
 
 /* Button Styling */
+/* Button Styling */
 .competition-button {
-  background-color: rgba(34, 193, 195, 0.8); /* Gradient-like button */
+  background-color: rgba(185, 142, 255, 0.8); /* Blue tone for dark theme */
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 50px; /* Make the button rounded */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -94,14 +72,15 @@
 }
 
 .competition-button:disabled {
-  background-color: rgba(34, 193, 195, 0.3);
+  background-color: rgba(52, 152, 219, 0.4);
   cursor: not-allowed;
 }
 
 .competition-button:hover:not(:disabled) {
   transform: translateY(-3px);
-  background-color: rgba(34, 193, 195, 1);
+  background-color: rgb(194, 166, 233);
 }
+
 
 /* Loading Spinner */
 .competition-spinner {
@@ -128,17 +107,17 @@
   background: rgba(255, 255, 255, 0.2);
   border: 1px dashed white;
   margin-bottom: 2rem;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .thumbnail-placeholder {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
 }
 
 .video-summary {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: white;
 }
 
@@ -146,18 +125,18 @@
 .metrics-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
 .metric {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: white;
   background: rgba(255, 255, 255, 0.2);
-  padding: 0.5rem;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .loading-state {
@@ -170,7 +149,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  height: 200px;
+  height: 250px;
   margin-top: 2rem;
 }
 
@@ -213,6 +192,13 @@
 
 .bar-title {
   margin-top: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: white;
+}
+
+/* Flex layout for buttons in horizontal line */
+.competition-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem; /* Add space between buttons */
 }
