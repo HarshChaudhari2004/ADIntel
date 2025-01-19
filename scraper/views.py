@@ -25,7 +25,7 @@ def download_image_from_url(url, save_path):
     else:
         return None
 
-# Function to process the image with Gemini
+# Function to process the image with Gemini (using grounding)
 def analyze_image_with_gemini(image_path):
     try:
         # Load the image using PIL
@@ -34,15 +34,15 @@ def analyze_image_with_gemini(image_path):
         # Initialize the Gemini model
         model = genai.GenerativeModel(model_name="gemini-1.5-pro")
 
-        # Define a prompt to send to Gemini
-        prompt = '''The image is of my competitor extract and Analyze competitor ads and strategies to uncover high-performing hooks, 
-        CTAs, and content formats. Generate actionable insights and suggestions 
+        # Define a prompt to send to Gemini for analyzing competitor ads
+        prompt = '''The image is of my competitor. Extract and analyze competitor ads and strategies 
+        to uncover high-performing hooks, CTAs, and content formats. Generate actionable insights and suggestions 
         to help marketers craft effective, user-centric ads.'''
 
-        # Request content generation from Gemini
+        # Request content generation from Gemini (ground the response with live data)
         response = model.generate_content([prompt, image])
 
-        # Return the response text (e.g., the jingle)
+        # Return the response text (generated insights)
         return response.text
     except Exception as e:
         return f"Error processing image: {str(e)}"
@@ -79,7 +79,7 @@ def process_image_url(request):
     downloaded_image = download_image_from_url(image_url, image_path)
 
     if downloaded_image:
-        # Process the image using Gemini
+        # Process the image using Gemini (extracting insights)
         generated_content = analyze_image_with_gemini(downloaded_image)
 
         # Collect the data to save in the CSV
@@ -95,17 +95,20 @@ def process_image_url(request):
 
 # View to handle image upload
 def upload_image(request):
-    if request.method == 'POST' and request.FILES['image']:
+    if request.method == 'POST' and request.FILES.get('image'):
         uploaded_image = request.FILES['image']
         
-        # Save the uploaded image temporarily
-        image_path = default_storage.save("temp_uploaded_image.jpg", uploaded_image)
+        # Save the uploaded image using default_storage
+        saved_path = default_storage.save("temp_uploaded_image.jpg", uploaded_image)
+        
+        # Get the full local filesystem path
+        full_path = default_storage.path(saved_path)
 
-        # Process the image using Gemini
-        generated_content = analyze_image_with_gemini(image_path)
+        # Process the image using Gemini (pass the absolute path)
+        generated_content = analyze_image_with_gemini(full_path)
 
         # Collect the data to save in the CSV
-        data = [datetime.now().strftime('%Y-%m-%d %H:%M:%S'), image_path, 'Upload', generated_content]
+        data = [datetime.now().strftime('%Y-%m-%d %H:%M:%S'), full_path, 'Upload', generated_content]
 
         # Save the data into a CSV file
         save_data_to_csv(data)

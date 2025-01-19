@@ -10,6 +10,7 @@
 <body>
     <h1>Upload Image or Provide Image URL for Ad Analysis</h1>
 
+    <!-- Form for URL input -->
     <form action="{% url 'process_image_url' %}" method="get">
         <label for="image_url">Enter Image URL:</label>
         <input type="text" id="image_url" name="image_url" required>
@@ -18,6 +19,7 @@
 
     <hr>
 
+    <!-- Form for file upload -->
     <form action="{% url 'upload_image' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="image">Upload an Image:</label>
