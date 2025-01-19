@@ -12,6 +12,4 @@ npm install
 
 # Build the React app
 echo "Building the React app..."
-npm run build
 
-echo "Build and deployment complete!"
