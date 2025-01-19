@@ -1,17 +1,16 @@
 .analytics-section {
   padding: 20px;
-  background-color: #f4f4f9;
 }
 
 .header h2 {
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .header p {
   font-size: 16px;
-  color: #666;
+  color: #ffffff;
 }
 
 .quick-stats {
@@ -22,7 +21,7 @@
 }
 
 .card {
-  background: white;
+  background: rgb(70, 21, 168);
   border: 1px solid #ddd;
   padding: 16px;
   border-radius: 8px;
@@ -31,12 +30,12 @@
 
 .card p {
   font-size: 14px;
-  color: #888;
+  color: #ffffff;
 }
 
 .card h4 {
   font-size: 20px;
-  color: #626161;
+  color: #ffffff;
   margin: 8px 0;
 }
 
@@ -50,13 +49,14 @@
 .chart {
   background: white;
   border: 1px solid #ddd;
+  background-color: rgb(180, 128, 244);
   padding: 16px;
   border-radius: 8px;
 }
 
 .chart h3 {
   font-size: 18px;
-  color: #7c7979;
+  color: #ffffff;
   margin-bottom: 16px;
 }
 
