@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-u)8lwk_7u0&p+$1xrx1ir-h3f3j(aqqha!)#io^hdl9+27xe=9'
+SECRET_KEY = 'django-insecure-#_0+pc_422xm7goy58&*j5fv!jb%^oy^85ac3lg$7(sr_d&c3x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'scraper',
     'corsheaders',
-    'rest_framework',
+    'scraper',
 ]
 
 MIDDLEWARE = [
@@ -72,8 +71,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ADIntel.wsgi.application'
-
-CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Database
@@ -127,3 +124,22 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Add these settings
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]
+
+# Add these settings for file uploads
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
