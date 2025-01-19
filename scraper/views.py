@@ -26,7 +26,7 @@ def download_image_from_url(url, save_path):
         return None
 
 # Function to process the image with Gemini (using grounding)
-def analyze_image_with_gemini(image_path):
+def analyze_image_with_gemini(image_path, prompt=None):
     try:
         # Load the image using PIL
         image = Image.open(image_path)
@@ -35,12 +35,14 @@ def analyze_image_with_gemini(image_path):
         model = genai.GenerativeModel(model_name="gemini-1.5-pro")
 
         # Define a prompt to send to Gemini for analyzing competitor ads
-        prompt = '''The image is of my competitor. Extract and analyze competitor ads and strategies 
+        base_prompt = '''The image is of my competitor. Extract and analyze competitor ads and strategies 
         to uncover high-performing hooks, CTAs, and content formats. Generate actionable insights and suggestions 
         to help marketers craft effective, user-centric ads.'''
 
+        final_prompt = prompt if prompt else base_prompt
+
         # Request content generation from Gemini (ground the response with live data)
-        response = model.generate_content([prompt, image])
+        response = model.generate_content([final_prompt, image])
 
         # Return the response text (generated insights)
         return response.text
@@ -69,6 +71,7 @@ def save_data_to_csv(data):
 # View to handle image URL input
 def process_image_url(request):
     image_url = request.GET.get('image_url', None)
+    prompt = request.GET.get('prompt')  # Get the custom prompt
     if not image_url:
         return JsonResponse({"error": "No image URL provided."}, status=400)
 
@@ -80,7 +83,7 @@ def process_image_url(request):
 
     if downloaded_image:
         # Process the image using Gemini (extracting insights)
-        generated_content = analyze_image_with_gemini(downloaded_image)
+        generated_content = analyze_image_with_gemini(downloaded_image, prompt=prompt)
 
         # Collect the data to save in the CSV
         data = [datetime.now().strftime('%Y-%m-%d %H:%M:%S'), image_path, 'URL', generated_content]
